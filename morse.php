@@ -13,7 +13,7 @@
 <?php
     $n = $_GET["n"];
     $m = $_GET["m"];
-    $array[
+    $array = [
         'A' => '.-',    'B' => '-...',  'C' => '-.-.', 'D' => '-..',
         'E' => '.',     'F' => '..-.',  'G' => '--.',  'H' => '....',
         'I' => '..',    'J' => '.---',  'K' => '-.-',  'L' => '.-..',
@@ -28,6 +28,20 @@
         '!' => '-.-.--', '/' => '-..-.',  '(' => '-.--.',  ')' => '-.--.-',
         ' ' => '/'
         ];
-     
+    if(isset($_GET['n'])) {
+        $n = strtoupper($_GET['n']);
+        $m = '';
+
+        for($i = 0; $i < strlen($n); $i++) {
+            $char = $n[$i];
+            if(isset($array[$char])) {
+                $m .= $array[$char] . ' ';
+            }
+        }
+
+        echo "<script>document.getElementsByName('m')[0].value = '" . trim($m) . "';</script>";
+    }
+?>
+</html>
 ?>
 </html>
